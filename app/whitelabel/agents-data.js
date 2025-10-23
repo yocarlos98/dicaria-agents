@@ -39,7 +39,7 @@ export const agentsData = [
       funcionClave2: "Gestiona la agenda",
       beneficioCentral: "Reduce las ausencias (no-shows) en un 40%",
       precio: "$39 USD / mes",
-      imagen: "/images/Cristian.jpg", // Reusamos imagen por ahora
+      imagen: "/images/Gael.jpg", // Imagen de Gael
       color: "blue",
       descripcion: `Gael es el asistente preciso y tranquilizador para tu clínica dental. Realiza un triage de síntomas, clasifica urgencias y gestiona la agenda para que tu equipo se enfoque en los pacientes.`,
       beneficios: [
@@ -87,7 +87,7 @@ export const agentsData = [
       funcionClave2: "Triage de síntomas básicos",
       beneficioCentral: "Mejora la comunicación y fidelización",
       precio: "$39 USD / mes",
-      imagen: "/images/Jhoan.jpg", // Reusamos imagen por ahora
+      imagen: "/images/Rocky.jpg", // Imagen de Rocky
       color: "brown",
       descripcion: "Rocky es el asistente amigable para tu clínica veterinaria. Agenda citas, envía recordatorios de vacunación y realiza un triage de síntomas básicos para que puedas enfocarte en el cuidado de las mascotas.",
       beneficios: [
@@ -140,7 +140,7 @@ export const agentsData = [
       funcionClave2: "Recolecta documentación preliminar",
       beneficioCentral: "Optimiza el tiempo de los abogados",
       precio: "$49 USD / mes",
-      imagen: "/images/Cristian.jpg", // Reusamos imagen por ahora
+      imagen: "/images/Lex.jpg", // Imagen de Lex
       color: "darkblue",
       descripcion: "Lex es el asistente legal que optimiza la captación de clientes. Realiza una calificación inicial de casos, agenda consultas y recolecta documentación preliminar de forma discreta y profesional.",
       beneficios: [
@@ -163,8 +163,7 @@ export const agentsData = [
       funcionClave1: "Recomienda productos",
       funcionClave2: "Gestión de devoluciones",
       beneficioCentral: "Aumenta el valor del carrito promedio (AOV) en un 20%",
-      precio: "$49 USD / mes",
-      imagen: "/images/Samanta.jpg", // Reusamos imagen por ahora
+      imagen: "/images/Zoe.jpg", // Imagen de Zoe
       color: "pink",
       descripcion: `Zoe es tu asesora de estilo virtual. Recomienda productos, resuelve dudas de tallas y gestiona devoluciones, convirtiendo visitantes en compradores leales y aumentando el valor de cada carrito.`,
       beneficios: [
@@ -193,7 +192,7 @@ export const agentsData = [
       funcionClave2: "Recomienda actividades",
       beneficioCentral: "Aumenta las reservas directas",
       precio: "$49 USD / mes",
-      imagen: "/images/Catalina.jpg", // Reusamos imagen por ahora
+      imagen: "/images/Aurora.jpg", // Imagen de Aurora
       color: "purple",
       descripcion: "Aurora es tu agente de viajes 24/7. Ayuda a los usuarios a encontrar y reservar vuelos y hoteles, recomienda actividades y resuelve dudas sobre destinos, todo de forma automática.",
       beneficios: [
@@ -217,7 +216,7 @@ export const agentsData = [
       funcionClave2: "Responde dudas sobre políticas",
       beneficioCentral: "Automatiza el 70% de tareas repetitivas de RRHH",
       precio: "$39 USD / mes",
-      imagen: "/images/Jhoan.jpg", // Reusamos imagen por ahora
+      imagen: "/images/Atlas.jpg", // Imagen de Atlas
       color: "green",
       descripcion: `Atlas automatiza las tareas repetitivas de RRHH. Guía a los nuevos empleados en su onboarding, responde dudas sobre políticas internas y gestiona solicitudes de vacaciones, liberando a tu equipo.`,
       beneficios: [
