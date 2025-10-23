@@ -64,6 +64,24 @@ Si quieres, puedo:
 
 ---
 Si quieres que haga el push remoto desde esta máquina, dime la URL del repo remoto (https) o configura el remote tú y yo haré el push.
+
+## Automatizar creación de repo y despliegue
+He incluido en el proyecto dos scripts PowerShell que puedes ejecutar localmente para automatizar la creación del repositorio en GitHub y el despliegue en Vercel. Importante: por seguridad no acepto credenciales aquí; ejecuta los scripts en tu máquina.
+
+- `scripts/create_github_repo.ps1` — intenta crear el repositorio usando `gh` (GitHub CLI) si está instalado; si no, usa la API de GitHub con la variable de entorno `GITHUB_TOKEN`.
+- `scripts/deploy_vercel.ps1` — lanza `npx vercel --prod` para desplegar; te pedirá autenticación en el navegador si es necesario.
+
+Ejemplo de uso (PowerShell):
+
+```powershell
+# Crear el repo (usa gh si hay login, o GITHUB_TOKEN si lo exportas en tu entorno)
+.\n+\scripts\create_github_repo.ps1 -RepoName "dicaria-agents" -Description "DICARIA Agents demo" -Private:$false
+
+# Desplegar con Vercel (interactivo la primera vez)
+.\n+\scripts\deploy_vercel.ps1
+```
+
+Si prefieres que te guíe paso a paso mientras ejecutas los scripts, lo hacemos juntos en la terminal.
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
