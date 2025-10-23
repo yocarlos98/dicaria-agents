@@ -1,20 +1,20 @@
 
 import React from 'react';
-import { File, AppWindow, Globe } from 'lucide-react'; // Usaremos íconos para hacerlo más visual
+import { File, AppWindow, Globe, UserCheck, Plug, TrendingUp } from 'lucide-react'; // Usaremos íconos para hacerlo más visual
 
 const steps = [
   {
-    icon: <File size={40} className="text-orange-400" />,
+    icon: <UserCheck size={40} className="text-orange-400" />,
     title: "1. Elige tu Agente",
     description: "Explora nuestros agentes especializados y selecciona el que mejor se adapte a las necesidades de tu negocio."
   },
   {
-    icon: <AppWindow size={40} className="text-orange-400" />,
-    title: "2. Lo Integramos por Ti",
-    description: "Nuestro equipo se encarga de la configuración e integración en tus canales (web, WhatsApp, etc.) de forma rápida y sin complicaciones."
+    icon: <Plug size={40} className="text-orange-400" />,
+    title: "2. Fácil De Integrar",
+    description: "Sin saber programar se conectará rápido y sencillo en tu sitio, tan fácil como Plug and Play y de todas formas nuestro equipo estará allí para ayudarte cuando lo necesites."
   },
   {
-    icon: <Globe size={40} className="text-orange-400" />,
+    icon: <TrendingUp size={40} className="text-orange-400" />,
     title: "3. Empieza a Crecer",
     description: "Tu agente empieza a trabajar de inmediato, atendiendo clientes, agendando citas y optimizando tu negocio 24/7."
   }
