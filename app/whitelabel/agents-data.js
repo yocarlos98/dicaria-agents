@@ -1,5 +1,30 @@
 export const agentsData = [
     {
+      id: "zeus",
+      nombre: "Zeus",
+      categoria: "Automatización Avanzada",
+      subsector: "Generador de Agentes Personalizados",
+      rol: "Agente IA Creador de Agentes",
+      personalidad: "Visionario y Potente",
+      funcionClave1: "Interpretación de lenguaje natural para diseño de automatizaciones",
+      funcionClave2: "Generación y despliegue de agentes IA personalizados",
+      beneficioCentral: "Transforma ideas en automatizaciones funcionales sin código",
+      precio: "$99 USD / mes",
+      imagen: "/images/Zeus.jpg",
+      color: "purple",
+      descripcion: `Zeus es el agente supremo que democratiza el poder de la inteligencia artificial. Olvídate de las barreras técnicas; con Zeus, tus ideas se transforman en automatizaciones funcionales con solo describirlas en lenguaje natural. Este 'agente cero' es tu arquitecto personal de IA, capaz de diseñar y desplegar soluciones a medida para cualquier necesidad de tu negocio, desde la gestión de tareas repetitivas hasta la creación de asistentes especializados. Zeus no solo te ahorra incontables horas de desarrollo, sino que te empodera para innovar y escalar tu operación a una velocidad sin precedentes, haciendo que la creación de agentes sea tan sencilla como pensar en ellos.`,
+      faqs: [
+        { pregunta: "¿Qué tipo de automatizaciones puede crear Zeus?", respuesta: "Zeus puede crear una amplia gama de automatizaciones, desde chatbots de atención al cliente hasta asistentes de gestión interna, basados en tus descripciones." },
+        { pregunta: "¿Necesito conocimientos de programación?", respuesta: "No, Zeus está diseñado para ser utilizado sin necesidad de conocimientos de programación. Solo necesitas describir lo que quieres." },
+        { pregunta: "¿Cómo se integra el agente creado?", respuesta: "Los agentes creados por Zeus pueden integrarse en tus canales existentes (web, WhatsApp, etc.) con nuestra asistencia." }
+      ],
+      integracion: {
+        compatibilidadCanal: ["Plataforma Web", "API Personalizada"],
+        requisitosConexion: "Acceso a la plataforma de Dicaria Agents y una descripción clara de la automatización deseada.",
+        funcionesMarcaBlanca: "Personalización completa del agente creado, incluyendo nombre, personalidad y flujos de trabajo."
+      }
+    },
+    {
       id: "estela",
       nombre: "Estela",
       categoria: "Salud y Bienestar",

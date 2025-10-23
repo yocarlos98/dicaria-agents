@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { agentsData } from "@/app/whitelabel/agents-data.js";
 import AgentCard from "./AgentCard.jsx";
+import ZeusCard from "./ZeusCard.jsx";
 
 // Definimos los colores para que Tailwind CSS pueda detectarlos
 const colorClasses = {
@@ -217,6 +218,16 @@ export default function AgentsList() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {agentes.map((agente) => {
                 const colors = colorClasses[agente.color] || colorClasses.orange;
+                if (agente.id === 'zeus') {
+                  return (
+                    <ZeusCard
+                      key={agente.id}
+                      agente={agente}
+                      colors={colors}
+                      abrirModal={abrirModal}
+                    />
+                  );
+                }
                 return (
                   <AgentCard
                     key={agente.id}
