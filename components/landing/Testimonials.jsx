@@ -7,19 +7,19 @@ const testimonials = [
     quote: "Desde que integramos a Samanta, nuestras reservas aumentaron un 30%. Es increíble cómo gestiona las citas sin que tengamos que intervenir. ¡Totalmente recomendado!",
     name: "Ana García",
     title: "CEO, Clínica Estética Belleza Total",
-    image: "/images/Samanta.jpg" // Placeholder image
+    image: "/images/AnaGarcia.jpg"
   },
   {
     quote: "Cristian califica a los leads de una forma que nuestro equipo no podía. Ahora solo hablamos con clientes realmente interesados. Nos ahorra horas de trabajo cada día.",
-    name: "Carlos Rodríguez",
-    title: "Director, Inmobiliaria Tu Hogar Ideal",
-    image: "/images/Cristian.jpg" // Placeholder image
+    name: "Fernando Restrepo",
+    title: "Emprendedor, Innovación Digital",
+    image: "/images/FernandoRestrepo.jpg"
   },
   {
     quote: "Tener a Catalina en nuestro gimnasio ha mejorado la retención de clientes. Los mensajes de motivación y recordatorios son un éxito. ¡Nuestros socios la adoran!",
     name: "Laura Fernández",
     title: "Manager, PowerFit Gym",
-    image: "/images/Catalina.jpg" // Placeholder image
+    image: "/images/LauraFernandez.jpg"
   }
 ];
 
