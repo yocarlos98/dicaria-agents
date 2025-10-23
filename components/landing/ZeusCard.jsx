@@ -20,12 +20,16 @@ const cardVariants = {
 export default function ZeusCard({ agente, colors, abrirModal }) {
   return (
     <motion.div
-      className="w-full bg-[#142F66] p-8 rounded-3xl border-4 border-purple-600 shadow-2xl flex flex-col items-center text-center transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
+      className="col-span-full md:col-span-3 bg-[#142F66] p-8 rounded-3xl border-4 border-purple-600 shadow-2xl flex flex-col items-center text-center transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
       initial="offscreen"
       whileInView="onscreen"
       viewport={{ once: true, amount: 0.5 }}
       variants={cardVariants}
     >
+      {/* Background effect for "throne" feel */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-purple-900 opacity-20 rounded-3xl z-0"></div>
+      <div className="absolute inset-0 bg-pattern-grid opacity-5 z-0"></div> {/* Optional: add a subtle grid pattern */}
+
       <div className="relative z-10 flex flex-col items-center">
         <img src={agente.imagen} alt={agente.nombre} className="w-48 h-48 object-cover rounded-full mb-6 border-8 border-purple-500 shadow-lg" />
         <h3 className="text-5xl font-extrabold text-white mb-2 drop-shadow-lg">{agente.nombre}</h3>

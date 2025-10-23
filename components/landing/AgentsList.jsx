@@ -43,8 +43,11 @@ export default function AgentsList() {
   const [inputValue, setInputValue] = useState('');
   const chatContainerRef = useRef(null);
 
-  // Agrupar agentes por categoría
-  const agentesPorCategoria = agentsData.reduce((acc, agente) => {
+  // Extraer a Zeus y agrupar el resto de agentes por categoría
+  const zeusAgent = agentsData.find(agente => agente.id === 'zeus');
+  const otherAgents = agentsData.filter(agente => agente.id !== 'zeus');
+
+  const agentesPorCategoria = otherAgents.reduce((acc, agente) => {
     const categoria = agente.categoria || 'General';
     if (!acc[categoria]) acc[categoria] = [];
     acc[categoria].push(agente);
@@ -212,22 +215,26 @@ export default function AgentsList() {
       </div>
       
       <div className="max-w-7xl mx-auto space-y-12">
+        {zeusAgent && (
+          <div className="mb-12">
+            <h3 className="text-3xl font-bold text-orange-400 mb-8 text-center">El Agente Supremo</h3>
+            <div className="flex justify-center"> {/* Centering container */}
+              <ZeusCard
+                key={zeusAgent.id}
+                agente={zeusAgent}
+                colors={colorClasses[zeusAgent.color] || colorClasses.orange}
+                abrirModal={abrirModal}
+              />
+            </div>
+          </div>
+        )}
+
         {Object.entries(agentesPorCategoria).map(([categoria, agentes]) => (
           <div key={categoria}>
             <h3 className="text-3xl font-bold text-orange-400 mb-8 text-center md:text-left">{categoria}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {agentes.map((agente) => {
                 const colors = colorClasses[agente.color] || colorClasses.orange;
-                if (agente.id === 'zeus') {
-                  return (
-                    <ZeusCard
-                      key={agente.id}
-                      agente={agente}
-                      colors={colors}
-                      abrirModal={abrirModal}
-                    />
-                  );
-                }
                 return (
                   <AgentCard
                     key={agente.id}
