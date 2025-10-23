@@ -1,5 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from "react";
+import { agentsData } from "@/app/whitelabel/agents-data.js";
+import AgentCard from "./AgentCard.jsx";
 
 // Definimos los colores para que Tailwind CSS pueda detectarlos
 const colorClasses = {
@@ -33,91 +35,20 @@ const colorClasses = {
   }
 };
 
-const agentes = {
-  samanta: {
-    nombre: "Samanta",
-    rol: "Agente IA para Clínicas Estéticas",
-    precio: "$39 USD / mes",
-    imagen: "/images/Samanta.jpg",
-    color: "orange",
-    descripcion: `Samanta es la asistente virtual perfecta para tu clínica estética. Atiende a tus clientes día y noche, responde preguntas comunes y agenda citas automáticamente sin que tú muevas un dedo.
-    
-✅ Se instala en minutos (Plug & Play)  
-✅ Funciona en tu página web, WhatsApp o Telegram  
-✅ Incluye soporte para ayudarte con la configuración inicial  
-
-💄 Ideal para clínicas que quieren verse profesionales, aumentar sus reservas y no perder clientes por mensajes sin responder.`,
-    faqs: [
-      { pregunta: "¿Necesito saber de tecnología para usarla?", respuesta: "No, Samanta está lista para usar. Nuestro equipo te guía paso a paso en la instalación." },
-      { pregunta: "¿Puedo integrarla con mi WhatsApp Business?", respuesta: "Sí, funciona con WhatsApp, Telegram o directamente en tu página web." },
-      { pregunta: "¿Qué pasa si tengo problemas al instalarla?", respuesta: "Tienes soporte incluido para resolver cualquier duda durante la configuración." }
-    ]
-  },
-  cristian: {
-    nombre: "Cristian",
-    rol: "Agente IA para Inmobiliarias",
-    precio: "$49 USD / mes",
-    imagen: "/images/Cristian.jpg",
-    color: "blue",
-    descripcion: `Cristian es tu nuevo asesor inmobiliario digital. Atiende a interesados en segundos, califica leads automáticamente y agenda visitas sin intervención humana.
-    
-✅ Instalación rápida y sin complicaciones  
-✅ Conecta con tu WhatsApp o sitio web  
-✅ Soporte técnico incluido para ayudarte con todo  
-
-🏠 Ideal para inmobiliarias que quieren vender más propiedades con menos esfuerzo y sin perder clientes por demoras.`,
-    faqs: [
-      { pregunta: "¿Puede Cristian responder en tiempo real?", respuesta: "Sí, responde automáticamente 24/7 a cualquier interesado." },
-      { pregunta: "¿Se integra con mis formularios web?", respuesta: "Sí, puedes conectarlo fácilmente a tus formularios o landing pages." },
-      { pregunta: "¿Necesito un programador para instalarlo?", respuesta: "No, nuestro soporte te ayuda a instalarlo en minutos." }
-    ]
-  },
-  catalina: {
-    nombre: "Catalina",
-    rol: "Agente IA para Gimnasios",
-    precio: "$29 USD / mes",
-    imagen: "/images/Catalina.jpg",
-    color: "pink",
-    descripcion: `Catalina mantiene tu gimnasio lleno y a tus clientes motivados. Envía recordatorios de asistencia, mensajes automáticos y cobra membresías atrasadas sin fricción.
-    
-✅ Se instala fácilmente en tu web o WhatsApp  
-✅ No necesitas conocimientos técnicos  
-✅ Soporte incluido para ayudarte con la configuración  
-
-🏋️‍♀️ Ideal para gimnasios o estudios fitness que quieren aumentar retención, ventas y fidelización de clientes.`,
-    faqs: [
-      { pregunta: "¿Catalina motiva a mis clientes?", respuesta: "Sí, envía mensajes automáticos de motivación y recordatorios personalizados." },
-      { pregunta: "¿Puedo usarla desde mi celular?", respuesta: "Sí, puedes acceder desde cualquier dispositivo." },
-      { pregunta: "¿Incluye soporte?", respuesta: "Sí, nuestro equipo te guía durante la instalación y primeros pasos." }
-    ]
-  },
-  jhoan: {
-    nombre: "Jhoan",
-    rol: "Agente IA para Emprendedores",
-    precio: "$19 USD / mes",
-    imagen: "/images/Jhoan.jpg",
-    color: "green",
-    descripcion: `Jhoan es tu coach digital de productividad. Envía recordatorios, mensajes motivadores y consejos diarios personalizados para mantenerte enfocado y avanzar.
-    
-✅ Instalación tipo Plug & Play  
-✅ Compatible con WhatsApp, Telegram o tu web  
-✅ Soporte gratuito para ayudarte a activarlo  
-
-🚀 Ideal para emprendedores, freelancers o equipos que quieren mantener la energía, el foco y los resultados día a día.`,
-    faqs: [
-      { pregunta: "¿Qué tipo de mensajes envía Jhoan?", respuesta: "Recordatorios, frases motivadoras y tips prácticos para mantenerte productivo." },
-      { pregunta: "¿Puedo personalizar los mensajes?", respuesta: "Sí, puedes editar el tono, los horarios y los temas." },
-      { pregunta: "¿Necesito instalar algo complicado?", respuesta: "No, Jhoan es Plug & Play. En minutos estará funcionando." }
-    ]
-  }
-};
-
 export default function AgentsList() {
   const [agenteSeleccionado, setAgenteSeleccionado] = useState(null);
   const [modalView, setModalView] = useState('details'); // 'details', 'chat', 'form'
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const chatContainerRef = useRef(null);
+
+  // Agrupar agentes por categoría
+  const agentesPorCategoria = agentsData.reduce((acc, agente) => {
+    const categoria = agente.categoria || 'General';
+    if (!acc[categoria]) acc[categoria] = [];
+    acc[categoria].push(agente);
+    return acc;
+  }, {});
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -220,10 +151,32 @@ export default function AgentsList() {
             <img src={agenteSeleccionado.imagen} alt={agenteSeleccionado.nombre} className="w-full h-64 object-cover rounded-xl mb-4" />
             <h2 className="text-2xl font-bold text-white">{agenteSeleccionado.nombre}</h2>
             <p className={colors.text}>{agenteSeleccionado.rol}</p>
-            <p className="mt-4 text-gray-300 whitespace-pre-line">{agenteSeleccionado.descripcion}</p>
+            {agenteSeleccionado.personalidad && <p className="text-gray-400 text-sm mt-1">**Personalidad:** {agenteSeleccionado.personalidad}</p>}
+            <p className="mt-4 text-gray-300">{agenteSeleccionado.descripcion}</p>
+            
+            {agenteSeleccionado.funcionClave1 && agenteSeleccionado.funcionClave2 && (
+              <div className="mt-4 text-left">
+                <h4 className="text-lg font-semibold text-white">Funciones Clave:</h4>
+                <ul className="list-disc list-inside text-gray-300">
+                  <li>{agenteSeleccionado.funcionClave1}</li>
+                  <li>{agenteSeleccionado.funcionClave2}</li>
+                </ul>
+              </div>
+            )}
+
+            {agenteSeleccionado.beneficioCentral && (
+              <p className={`mt-4 text-lg font-bold ${colors.text}`}>🎯 Beneficio Central: {agenteSeleccionado.beneficioCentral}</p>
+            )}
+
+            <div className="mt-4 text-left">
+              {agenteSeleccionado.beneficios?.map((beneficio, i) => (
+                <p key={i} className="text-gray-300">✅ {beneficio}</p>
+              ))}
+            </div>
+
             <p className={`mt-4 font-semibold ${colors.text}`}>{agenteSeleccionado.precio}</p>
-            <h3 className="mt-6 text-lg font-semibold text-white">Preguntas Frecuentes</h3>
-            <ul className="mt-2 space-y-3">
+            <h3 className="mt-6 text-lg font-semibold text-white">Preguntas del Agente</h3>
+            <ul className="mt-2 space-y-3 text-left">
               {agenteSeleccionado.faqs.map((faq, i) => (
                 <li key={i} className="border-b border-gray-700 pb-2">
                   <p className={`font-semibold ${colors.text}`}>{faq.pregunta}</p>
@@ -231,6 +184,16 @@ export default function AgentsList() {
                 </li>
               ))}
             </ul>
+            {agenteSeleccionado.integracion && (
+              <div className="mt-6 text-left">
+                <h3 className="text-lg font-semibold text-white">Requisitos de Integración:</h3>
+                <ul className="mt-2 space-y-2 text-gray-300">
+                  <li><span className="font-semibold">Compatibilidad de Canal:</span> {agenteSeleccionado.integracion.compatibilidadCanal.join(', ')}</li>
+                  <li><span className="font-semibold">Requisitos de Conexión:</span> {agenteSeleccionado.integracion.requisitosConexion}</li>
+                  <li><span className="font-semibold">Funciones de Marca Blanca:</span> {agenteSeleccionado.integracion.funcionesMarcaBlanca}</li>
+                </ul>
+              </div>
+            )}
             <div className="flex justify-center gap-4 mt-6">
                 <button onClick={() => setModalView('chat')} className="bg-gray-600 text-white px-5 py-2 rounded-xl hover:bg-gray-700 transition">Conversar</button>
                 <button onClick={() => setModalView('form')} className={`${colors.bg} text-white px-5 py-2 rounded-xl ${colors.hoverBg} transition`}>Contratar</button>
@@ -242,24 +205,30 @@ export default function AgentsList() {
 
   return (
     <div id="agentes" className="py-20 px-6">
-      <h2 className="text-4xl font-bold text-white mb-12 text-center">Conoce a Nuestros Agentes</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-        {Object.values(agentes).map((agente, index) => {
-          const colors = colorClasses[agente.color] || colorClasses.orange;
-          return (
-            <div key={index} className="bg-[#1B3577] shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition transform hover:-translate-y-2">
-              <img src={agente.imagen} alt={agente.nombre} className="w-full h-56 object-cover object-top" />
-              <div className="p-6 text-center">
-                <h2 className="text-xl font-semibold text-white">{agente.nombre}</h2>
-                <p className={colors.text}>{agente.rol}</p>
-                <p className="mt-2 font-bold text-white">{agente.precio}</p>
-                <button onClick={() => abrirModal(agente)} className={`mt-4 px-5 py-2 rounded-lg transition ${colors.bg} text-white ${colors.hoverBg}`}>
-                  Más Información
-                </button>
-              </div>
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-white">Un Marketplace de Agentes para cada Necesidad</h2>
+        <p className="text-gray-300 mt-2 max-w-3xl mx-auto">Explora nuestras categorías y encuentra el agente de IA perfecto para llevar tu negocio al siguiente nivel.</p>
+      </div>
+      
+      <div className="max-w-7xl mx-auto space-y-12">
+        {Object.entries(agentesPorCategoria).map(([categoria, agentes]) => (
+          <div key={categoria}>
+            <h3 className="text-3xl font-bold text-orange-400 mb-8 text-center md:text-left">{categoria}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {agentes.map((agente) => {
+                const colors = colorClasses[agente.color] || colorClasses.orange;
+                return (
+                  <AgentCard
+                    key={agente.id}
+                    agente={agente}
+                    colors={colors}
+                    abrirModal={abrirModal}
+                  />
+                )
+              })}
             </div>
-          )
-        })}
+          </div>
+        ))}
       </div>
 
       {agenteSeleccionado && (
