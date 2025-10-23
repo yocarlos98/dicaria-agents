@@ -148,7 +148,7 @@ export default function AgentsList() {
       default: // 'details'
         return (
           <>
-            <img src={agenteSeleccionado.imagen} alt={agenteSeleccionado.nombre} className="w-full h-64 object-cover rounded-xl mb-4" />
+            <img src={agenteSeleccionado.imagen} alt={agenteSeleccionado.nombre} className="w-full object-cover rounded-xl mb-4" />
             <h2 className="text-2xl font-bold text-white">{agenteSeleccionado.nombre}</h2>
             <p className={colors.text}>{agenteSeleccionado.rol}</p>
             {agenteSeleccionado.personalidad && <p className="text-gray-400 text-sm mt-1">**Personalidad:** {agenteSeleccionado.personalidad}</p>}
